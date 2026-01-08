@@ -8,85 +8,111 @@
 
   <style>
     :root{
-      --bg:#0b0b0d;
-      --panel:#121218;
-      --text:#f2f2f2;
-      --muted:#b9b9b9;
-      --muted2:#9a9a9a;
-      --line:#23232b;
+      --bg:#07070a;
+      --panel: rgba(18,18,26,.72);
+      --panel2: rgba(14,14,20,.70);
+      --text:#f4f4f6;
+      --muted:#c0c0cc;
+      --muted2:#9a9aad;
+      --line: rgba(255,255,255,.10);
       --accent:#ff914d;
       --accent2:#7cffc4;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-      --r:20px;
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
+      --shadow2: 0 10px 40px rgba(0,0,0,.35);
+      --r:22px;
+
+      --max: 1140px;
     }
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(1100px 520px at 15% 8%, rgba(255,145,77,.13), transparent 55%),
-        radial-gradient(900px 520px at 85% 20%, rgba(124,255,196,.10), transparent 55%),
-        var(--bg);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color:var(--text);
       line-height:1.55;
       overflow-x:hidden;
+
+      /* premium background */
+      background:
+        radial-gradient(1200px 600px at 18% 10%, rgba(255,145,77,.16), transparent 55%),
+        radial-gradient(900px 520px at 80% 18%, rgba(124,255,196,.12), transparent 55%),
+        radial-gradient(600px 380px at 55% 90%, rgba(160,140,255,.10), transparent 60%),
+        var(--bg);
     }
-    a{color:var(--accent); text-decoration:none;}
-    a:hover{text-decoration:underline;}
 
-    .wrap{max-width:1120px; margin:0 auto; padding:96px 18px 80px;}
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    /* NAVBAR */
+    /* layout */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 96px 18px 120px;
+    }
+
+    /* Top nav */
     .nav{
-      position:fixed;
-      top:14px; left:50%;
-      transform:translateX(-50%);
-      width:min(1100px, calc(100% - 24px));
-      z-index:1000;
-      background:rgba(18,18,24,.78);
-      border:1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      border-radius:999px;
-      box-shadow:0 14px 40px rgba(0,0,0,.35);
-      padding:10px 12px;
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--max), calc(100% - 24px));
+      z-index: 1000;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:10px;
+      gap:12px;
+
+      background: rgba(12,12,18,.62);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      padding: 10px 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow2);
     }
+
     .brand{
-      display:flex; align-items:center; gap:10px;
-      padding-left:6px;
-      font-weight:900;
-      letter-spacing:.3px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 950;
+      letter-spacing:.2px;
+      color: rgba(255,255,255,.92);
       white-space:nowrap;
+      padding-left:6px;
     }
-    .dot{
+    .spark{
       width:10px; height:10px; border-radius:50%;
-      background:linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow:0 0 0 6px rgba(255,145,77,.10);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(255,145,77,.10);
     }
+
     .navlinks{
-      display:flex; gap:10px; flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
       justify-content:center;
     }
     .navlinks a{
-      color:rgba(255,255,255,.86);
-      font-size:13px;
-      font-weight:900;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-      transition:background .15s ease, border .15s ease, transform .15s ease;
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      font-weight: 900;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background .15s ease, border .15s ease, transform .15s ease;
     }
     .navlinks a:hover{
-      background:rgba(255,255,255,.05);
-      border-color:rgba(255,255,255,.10);
-      transform:translateY(-1px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.12);
+      transform: translateY(-1px);
       text-decoration:none;
     }
-    .navcta{display:flex; gap:10px; align-items:center;}
+
+    .navcta{ display:flex; gap:10px; align-items:center; }
 
     .btn{
       display:inline-flex;
@@ -94,226 +120,384 @@
       justify-content:center;
       gap:8px;
       padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:950;
-      font-size:13px;
-      transition: transform .15s ease, background .15s ease, border .15s ease;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 950;
+      font-size: 13px;
       white-space:nowrap;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
     }
-    .btn:hover{transform:translateY(-2px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.18); text-decoration:none;}
+    .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.20); text-decoration:none; }
     .btn.primary{
-      color:#0b0b0d;
-      background:linear-gradient(135deg, rgba(255,145,77,.98), rgba(255,145,77,.72));
-      border-color:rgba(255,145,77,.60);
+      color: #0a0a0d;
+      background: linear-gradient(135deg, rgba(255,145,77,1), rgba(255,145,77,.72));
+      border-color: rgba(255,145,77,.70);
     }
-    .btn.primary:hover{background:linear-gradient(135deg, rgba(255,145,77,1), rgba(255,145,77,.80));}
-
-    @media (max-width: 880px){
-      .navlinks{display:none;}
+    .btn.primary:hover{
+      background: linear-gradient(135deg, rgba(255,145,77,1), rgba(255,145,77,.82));
     }
 
-    /* PANELS */
+    @media (max-width: 920px){
+      .navlinks{ display:none; }
+    }
+
+    /* Sticky “Hire me” bar (conversion) */
+    .hirebar{
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--max), calc(100% - 24px));
+      z-index: 999;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+
+      background: rgba(12,12,18,.62);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 12px 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow2);
+    }
+    .hirebar .left{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width: 0;
+    }
+    .hirebar .t1{
+      font-weight: 950;
+      letter-spacing:.2px;
+      font-size: 13px;
+      color: rgba(255,255,255,.92);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .hirebar .t2{
+      font-size: 12px;
+      color: rgba(255,255,255,.70);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .hirebar .right{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    @media (max-width: 720px){
+      .hirebar{ flex-direction:column; align-items:stretch; }
+      .hirebar .right{ justify-content:stretch; }
+      .hirebar .right .btn{ width:100%; }
+      .hirebar .left{ width:100%; }
+    }
+
+    /* Panels + section titles */
     .panel{
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border:1px solid var(--line);
-      border-radius:24px;
-      box-shadow:var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
     }
-    .section{padding:28px 28px 24px; margin-top:18px;}
+    .section{ padding: 30px 30px 24px; margin-top: 18px; }
+
     h2{
       margin:0;
-      font-size:34px;
-      letter-spacing:.6px;
+      font-size: 34px;
+      letter-spacing: .6px;
     }
     h2 span{
       display:block;
-      color:rgba(255,255,255,.18);
-      font-weight:900;
-      margin-top:4px;
+      color: rgba(255,255,255,.18);
+      font-weight: 950;
+      margin-top: 4px;
     }
     .sub{
-      margin:12px 0 0;
-      color:var(--muted);
-      max-width:920px;
-      font-size:14px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      max-width: 940px;
+      font-size: 14px;
     }
 
     /* HERO */
-    .hero{padding:28px;}
+    .hero{ padding: 30px; }
     .heroGrid{
       display:grid;
-      grid-template-columns: 360px 1fr;
-      gap:18px;
+      grid-template-columns: 400px 1fr;
+      gap: 18px;
       align-items:stretch;
     }
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns:1fr;}
+    @media (max-width: 1000px){
+      .heroGrid{ grid-template-columns: 1fr; }
     }
 
     .profileCard{
-      padding:18px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
     }
-    .avatar{
-      width:100%;
-      aspect-ratio: 4/3;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(800px 280px at 40% 30%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(135deg, rgba(255,145,77,.22), rgba(124,255,196,.12)),
-        #0d0d12;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      padding:12px;
-    }
-    .chip{
-      font-size:12px;
-      color:#0b0b0d;
-      background:var(--accent);
-      border-radius:999px;
-      padding:6px 10px;
-      font-weight:950;
-      letter-spacing:.2px;
-    }
-    .chip.secondary{background:var(--accent2);}
 
-    .name{margin:14px 0 4px; font-size:22px; font-weight:950;}
-    .roles{margin:0; color:var(--muted); font-weight:900; font-size:13px;}
-    .bio{margin:10px 0 12px; color:var(--muted); font-size:14px;}
-    .meta{color:var(--muted2); font-size:12px; margin-top:10px;}
+    /* Headshot */
+    .headshotRow{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .headshot{
+      width: 90px;
+      height: 90px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .headshot img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .headshot .ph{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:950;
+      color: rgba(255,255,255,.65);
+      font-size: 12px;
+      text-align:center;
+      padding: 10px;
+    }
+
+    .name{
+      margin: 0;
+      font-size: 22px;
+      font-weight: 950;
+      letter-spacing: .2px;
+    }
+    .roles{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .bio{
+      margin: 12px 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .badgeRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .badge{
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.90);
+      font-weight: 950;
+      letter-spacing: .2px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .dot2{ width:8px; height:8px; border-radius:999px; background: var(--accent); }
+    .dot2.alt{ background: var(--accent2); }
+
+    .ctaRow{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    .meta{
+      margin-top: 12px;
+      color: rgba(255,255,255,.62);
+      font-size: 12px;
+    }
 
     .heroMain{
-      padding:18px 18px 16px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      padding: 18px 18px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
     }
     .heroMain h1{
-      margin:0;
-      font-size:54px;
-      letter-spacing:1px;
-      line-height:1.03;
+      margin: 0;
+      font-size: 56px;
+      letter-spacing: 1px;
+      line-height: 1.03;
     }
     .heroMain h1 span{
       display:block;
-      color:rgba(255,255,255,.22);
-      font-weight:900;
+      color: rgba(255,255,255,.22);
+      font-weight: 950;
     }
-    .heroMain p{margin:12px 0 0; color:var(--muted); max-width:880px; font-size:15px;}
+    .heroMain p{
+      margin: 12px 0 0;
+      color: var(--muted);
+      max-width: 880px;
+      font-size: 15px;
+    }
 
-    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
-    .badge{
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.03);
-      color:rgba(255,255,255,.9);
-      font-weight:950;
-      letter-spacing:.2px;
+    .tagGrid{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .tag{
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.88);
+      font-weight: 950;
     }
 
     .stats{
       display:flex;
       flex-wrap:wrap;
-      gap:18px;
-      margin-top:16px;
-      padding-top:16px;
-      border-top:1px solid rgba(255,255,255,.08);
+      gap: 18px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.10);
     }
-    .stat{min-width:160px;}
-    .stat .num{font-size:30px; font-weight:950;}
-    .stat .lbl{margin-top:2px; font-size:12px; color:var(--muted2); text-transform:uppercase; letter-spacing:.6px;}
+    .stat{ min-width: 160px; }
+    .stat .num{ font-size: 30px; font-weight: 950; }
+    .stat .lbl{ font-size: 12px; color: var(--muted2); text-transform:uppercase; letter-spacing:.6px; margin-top:2px; }
 
-    /* GRID CARDS */
+    /* Cards grid */
     .grid{
-      margin-top:18px;
+      margin-top: 18px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:14px;
+      gap: 14px;
     }
     .card{
       grid-column: span 6;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:20px;
-      padding:16px 16px 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding: 16px 16px 14px;
       transition: transform .18s ease, border .18s ease, background .18s ease;
     }
     .card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(255,255,255,.18);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,.20);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
     }
-    @media (max-width: 900px){ .card{grid-column: span 12;} }
-    .card h3{margin:0 0 6px; font-size:16px; letter-spacing:.2px;}
-    .card p{margin:0; color:var(--muted); font-size:13px;}
-    .card .meta2{margin-top:10px; color:var(--muted2); font-size:12px;}
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+    }
 
-    .pillrow{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;}
+    .card h3{ margin: 0 0 6px; font-size: 16px; letter-spacing:.2px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 13px; }
+    .meta2{ margin-top: 10px; color: rgba(255,255,255,.62); font-size: 12px; }
+
+    .pillrow{ margin-top: 10px; display:flex; flex-wrap:wrap; gap: 8px; }
     .pill{
-      font-size:11px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      color:rgba(255,255,255,.88);
-      font-weight:900;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.88);
+      font-weight: 900;
     }
-    .ctaRow{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;}
 
-    /* Screenshots */
+    /* Screenshot */
     .shot{
-      margin:-6px -6px 12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
+      margin: -6px -6px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
       overflow:hidden;
-      background:rgba(255,255,255,.02);
-      height:160px;
+      background: rgba(255,255,255,.03);
+      height: 165px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
-    .shot img{width:100%; height:100%; object-fit:cover; display:block;}
-    .shot .ph{color:rgba(255,255,255,.60); font-weight:950; font-size:12px; padding:16px; text-align:center;}
+    .shot img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .shot .ph{
+      color: rgba(255,255,255,.65);
+      font-weight: 950;
+      font-size: 12px;
+      padding: 14px;
+      text-align:center;
+    }
+
+    /* Featured card */
+    .featured{
+      grid-column: span 12;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,145,77,.12), rgba(255,255,255,.02));
+    }
+    .featured:hover{
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,.20);
+    }
+    .klist{ margin: 10px 0 0 18px; color: var(--muted); font-size: 14px; }
 
     /* Timeline */
-    .timeline{margin-top:18px; display:flex; flex-direction:column; gap:12px;}
+    .timeline{ margin-top: 18px; display:flex; flex-direction:column; gap: 12px; }
     .item{
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.02);
-      border-radius:20px;
-      padding:14px 14px 12px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      padding: 14px 14px 12px;
     }
-    .topline{display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;}
-    .tTitle{font-weight:950; letter-spacing:.2px;}
-    .date{color:var(--muted2); font-size:12px;}
-    .item ul{margin:10px 0 0 18px; color:var(--muted); font-size:13px;}
+    .topline{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:baseline; }
+    .tTitle{ font-weight: 950; letter-spacing:.2px; }
+    .date{ color: var(--muted2); font-size: 12px; }
+    .item ul{ margin: 10px 0 0 18px; color: var(--muted); font-size: 13px; }
+
+    /* Contact card */
+    .contactCard{
+      grid-column: span 12;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(124,255,196,.10), rgba(255,255,255,.02));
+    }
 
     footer{
-      margin-top:18px;
-      padding:26px 6px 0;
-      border-top:1px solid rgba(255,255,255,.10);
-      color:#777;
-      font-size:12px;
+      margin-top: 20px;
+      padding: 26px 6px 0;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.50);
+      font-size: 12px;
       text-align:center;
+    }
+
+    /* Reveal on scroll */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+    }
+    .reveal.on{
+      opacity:1;
+      transform: translateY(0);
+      transition: opacity .6s ease, transform .6s ease;
     }
   </style>
 </head>
 
 <body>
-
   <!-- NAV -->
   <div class="nav" role="navigation" aria-label="Main navigation">
-    <div class="brand"><span class="dot"></span> Ram Vamshi</div>
-
+    <div class="brand"><span class="spark"></span> Ram Vamshi</div>
     <div class="navlinks">
       <a href="#featured">Featured</a>
       <a href="#skills">Skills</a>
@@ -323,7 +507,6 @@
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </div>
-
     <div class="navcta">
       <a class="btn" href="https://github.com/ramvamshi019" target="_blank" rel="noopener">GitHub</a>
       <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">⬇ Resume</a>
@@ -333,70 +516,81 @@
   <div class="wrap">
 
     <!-- HERO -->
-    <section class="panel hero" id="top">
+    <section class="panel hero reveal" id="top">
       <div class="heroGrid">
-
+        <!-- left -->
         <div class="profileCard">
-          <div class="avatar">
-            <div class="chip">Backend</div>
-            <div class="chip secondary">Cloud</div>
+          <div class="headshotRow">
+            <div class="headshot" aria-label="Profile photo">
+              <img src="assets/profile.jpeg" alt="Ram Vamshi photo"
+                   onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='flex';">
+              <div class="ph" style="display:none;">Upload<br><strong>assets/profile.jpg</strong></div>
+            </div>
+            <div>
+              <div class="name">Ram Vamshi Krishna Rudraram</div>
+              <div class="roles">Open to: Backend / Platform • Cloud / DevOps</div>
+            </div>
           </div>
 
-          <div class="name">Ram Vamshi Krishna Rudraram</div>
-          <p class="roles">Open to: Backend / Platform Engineer • Cloud / DevOps Engineer</p>
-
-          <p class="bio">
+          <div class="bio">
             I build reliable backend services, APIs, automation workflows, and cloud-deployed applications.
-            Comfortable shipping production-ready code, debugging issues, and improving reliability.
-          </p>
+            I care about clean architecture, debuggability, and shipping production-ready code.
+          </div>
+
+          <div class="badgeRow">
+            <span class="badge"><span class="dot2"></span> Backend / Platform</span>
+            <span class="badge"><span class="dot2 alt"></span> Cloud / DevOps</span>
+          </div>
 
           <div class="ctaRow">
-            <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">⬇ Resume (PDF)</a>
+            <a class="btn primary" href="mailto:ADD_EMAIL?subject=Job%20Opportunity%20-%20Backend%20/%20Cloud" rel="noopener">Contact Me</a>
             <a class="btn" href="ADD_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn" href="mailto:ADD_EMAIL">Email</a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
           </div>
 
           <div class="meta">
-            Replace: <strong>ADD_EMAIL</strong> and <strong>ADD_LINKEDIN</strong> in the code.
+            Replace <strong>ADD_EMAIL</strong> and <strong>ADD_LINKEDIN</strong> in this file.
           </div>
         </div>
 
+        <!-- right -->
         <div class="heroMain">
           <h1>SOFTWARE <span>ENGINEER</span></h1>
           <p>
             Targeting two tracks: <strong>Backend/Platform</strong> and <strong>Cloud/DevOps</strong>.
-            I enjoy building systems that are clean, debuggable, and easy to extend — with automation where it removes manual work.
+            I build systems that are clean, scalable, and easy to maintain — with automation where it removes manual effort.
           </p>
 
-          <div class="badges">
-            <div class="badge">Backend APIs</div>
-            <div class="badge">Cloud Deployments</div>
-            <div class="badge">Docker</div>
-            <div class="badge">CI/CD</div>
-            <div class="badge">Automation</div>
-            <div class="badge">Applied ML/NLP</div>
+          <div class="tagGrid">
+            <span class="tag">REST APIs</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Automation</span>
+            <span class="tag">SQL / PostgreSQL</span>
+            <span class="tag">Applied ML/NLP</span>
           </div>
 
           <div class="stats">
             <div class="stat"><div class="num">+12</div><div class="lbl">Projects Built</div></div>
-            <div class="stat"><div class="num">+3</div><div class="lbl">Core Portfolio Projects</div></div>
+            <div class="stat"><div class="num">+3</div><div class="lbl">Featured Projects</div></div>
             <div class="stat"><div class="num">+4</div><div class="lbl">Years (Projects + Training)</div></div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- FEATURED -->
-    <section class="panel section" id="featured">
+    <section class="panel section reveal" id="featured">
       <h2>FEATURED <span>PROJECT</span></h2>
-      <p class="sub">One project recruiters can understand fast. This is intentionally short and scannable.</p>
+      <p class="sub">A system-level project recruiters can understand in ~10 seconds.</p>
 
       <div class="grid">
-        <article class="card" style="grid-column: span 12;">
+        <article class="featured card">
           <div class="shot">
             <img src="assets/projects/amtrakr.png" alt="Amtrakr screenshot"
-              onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
             <div class="ph" style="display:none;">Upload: <strong>assets/projects/amtrakr.png</strong></div>
           </div>
 
@@ -405,6 +599,13 @@
             Web application to search and track Amtrak trains in progress. Split into a frontend (“Website”) and a Node.js backend (“APICalls”)
             that serves API calls consumed by the UI.
           </p>
+
+          <ul class="klist">
+            <li>Backend API request flow for live train search/tracking.</li>
+            <li>Clean UI for searching routes and checking status.</li>
+            <li>Structured repo into frontend + backend for separation of concerns.</li>
+          </ul>
+
           <div class="meta2"><strong>Stack:</strong> JavaScript, Node.js, HTML, CSS</div>
 
           <div class="pillrow">
@@ -413,15 +614,16 @@
 
           <div class="ctaRow">
             <a class="btn primary" href="https://github.com/ramvamshi019/Amtrakr-Project" target="_blank" rel="noopener">View Repo →</a>
+            <a class="btn" href="#contact">Hire / Contact →</a>
           </div>
         </article>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section class="panel section" id="skills">
+    <section class="panel section reveal" id="skills">
       <h2>CORE <span>SKILLS</span></h2>
-      <p class="sub">Optimized for fast recruiter scanning across two tracks: Backend/Platform + Cloud/DevOps.</p>
+      <p class="sub">Optimized for recruiter scanning across Backend/Platform + Cloud/DevOps.</p>
 
       <div class="grid">
         <div class="card">
@@ -450,7 +652,7 @@
 
         <div class="card">
           <h3>Engineering Habits</h3>
-          <p>Readable code, structured repos, logs, clear APIs, docs that make handoff easy.</p>
+          <p>Readable code, structured repos, logs, clear APIs, documentation for easy handoff.</p>
           <div class="pillrow">
             <span class="pill">Docs</span><span class="pill">Git</span><span class="pill">Maintainability</span><span class="pill">Reliability</span>
           </div>
@@ -459,16 +661,15 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="panel section" id="projects">
+    <section class="panel section reveal" id="projects">
       <h2>RECENT <span>PROJECTS</span></h2>
-      <p class="sub">Projects written in interview-ready language. Add screenshots in <strong>assets/projects/</strong> for best impact.</p>
+      <p class="sub">Add screenshots in <strong>assets/projects/</strong> for best impact.</p>
 
       <div class="grid">
-
         <article class="card">
           <div class="shot">
             <img src="assets/projects/amtrakr.png" alt="Amtrakr screenshot"
-              onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
             <div class="ph" style="display:none;">Upload: <strong>assets/projects/amtrakr.png</strong></div>
           </div>
           <h3>Amtrakr — Train Tracker (Full-Stack)</h3>
@@ -483,7 +684,7 @@
         <article class="card">
           <div class="shot">
             <img src="assets/projects/ecommerce-ml.png" alt="Ecommerce ML screenshot"
-              onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
             <div class="ph" style="display:none;">Upload: <strong>assets/projects/ecommerce-ml.png</strong></div>
           </div>
           <h3>E-Commerce Machine Learning Project</h3>
@@ -498,7 +699,7 @@
         <article class="card">
           <div class="shot">
             <img src="assets/projects/reading-qa.png" alt="Reading QA screenshot"
-              onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='block';">
             <div class="ph" style="display:none;">Upload: <strong>assets/projects/reading-qa.png</strong></div>
           </div>
           <h3>Reading Comprehension QA for E-Commerce Chatbots</h3>
@@ -509,17 +710,15 @@
             <a class="btn" href="https://github.com/ramvamshi019/Reading-Comprehension-QA-for-E-Commerce-Chatbots" target="_blank" rel="noopener">GitHub →</a>
           </div>
         </article>
-
       </div>
     </section>
 
-    <!-- IEEE PAPERS (2 for now) -->
-    <section class="panel section" id="papers">
+    <!-- IEEE PAPERS -->
+    <section class="panel section reveal" id="papers">
       <h2>IEEE <span>PAPERS</span></h2>
       <p class="sub">Two publications from my Master’s work. Replace titles/links as needed.</p>
 
       <div class="grid">
-
         <article class="card">
           <h3>Reading Comprehension QA for E-Commerce Chatbots</h3>
           <p>
@@ -538,10 +737,8 @@
 
         <article class="card">
           <h3>Master’s IEEE Paper #2 (Title)</h3>
-          <p>
-            Add 1–2 lines describing the problem, your method, and your outcome (keep it technical and simple).
-          </p>
-          <div class="meta2"><strong>Keywords:</strong> Add keywords here (e.g., Cloud, Systems, ML, Security)</div>
+          <p>Add 1–2 lines describing the problem, your method, and your outcome.</p>
+          <div class="meta2"><strong>Keywords:</strong> Cloud, Systems, ML, Security (edit)</div>
           <div class="pillrow">
             <span class="pill">Masters</span><span class="pill">IEEE</span><span class="pill">Research</span>
           </div>
@@ -550,12 +747,11 @@
             <a class="btn" href="ADD_IEEE_OR_DOI_LINK_2" target="_blank" rel="noopener">IEEE/DOI →</a>
           </div>
         </article>
-
       </div>
     </section>
 
     <!-- EDUCATION -->
-    <section class="panel section" id="education">
+    <section class="panel section reveal" id="education">
       <h2>EDUCATION <span>& FOCUS</span></h2>
       <p class="sub">Academic background aligned with backend systems, cloud engineering, and applied ML/NLP.</p>
 
@@ -566,7 +762,7 @@
             <div class="date">Missouri State University</div>
           </div>
           <ul>
-            <li>Focus areas: backend systems, cloud engineering, applied ML/NLP, engineering projects.</li>
+            <li>Focus: backend systems, cloud engineering, applied ML/NLP, engineering projects.</li>
             <li>Publications: IEEE papers listed above.</li>
           </ul>
         </div>
@@ -577,14 +773,14 @@
             <div class="date">Add your university (optional)</div>
           </div>
           <ul>
-            <li>Foundation in programming, data structures, databases, and software engineering.</li>
+            <li>Foundation in programming, databases, data structures, and software engineering.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="panel section" id="experience">
+    <section class="panel section reveal" id="experience">
       <h2>ENGINEERING <span>EXPERIENCE</span></h2>
       <p class="sub">Project-based engineering experience focused on backend systems, cloud platforms, automation, and applied ML/NLP.</p>
 
@@ -625,56 +821,59 @@
       </div>
     </section>
 
-    <!-- RESUME -->
-    <section class="panel section" id="resume">
-      <h2>RESUME <span>DOWNLOAD</span></h2>
-      <p class="sub">Upload <strong>resume.pdf</strong> to this repo to enable the download button.</p>
-      <div class="ctaRow" style="margin-top:14px;">
-        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">⬇ Download Resume (PDF)</a>
-      </div>
-    </section>
-
     <!-- CONTACT -->
-    <section class="panel section" id="contact">
+    <section class="panel section reveal" id="contact">
       <h2>LET’S <span>CONNECT</span></h2>
       <p class="sub">If you’re hiring for Backend/Platform or Cloud/DevOps roles, I’d love to connect and share my work.</p>
 
-      <div class="ctaRow" style="margin-top:16px;">
-        <a class="btn primary" href="mailto:ADD_EMAIL">Email Me</a>
-        <a class="btn" href="ADD_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/ramvamshi019" target="_blank" rel="noopener">GitHub</a>
-      </div>
+      <div class="grid">
+        <div class="contactCard">
+          <h3 style="margin:0 0 6px;">Best way to reach me</h3>
+          <p style="color:var(--muted); margin:0;">
+            Email is fastest. I respond quickly and can share resume, projects, and availability.
+          </p>
 
-      <div class="meta" style="margin-top:10px;">
-        Replace: <strong>ADD_EMAIL</strong> and <strong>ADD_LINKEDIN</strong> (and optional IEEE/DOI links).
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn primary" href="mailto:ADD_EMAIL?subject=Job%20Opportunity%20-%20Backend%20/%20Cloud">Email Me</a>
+            <a class="btn" href="ADD_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+            <a class="btn" href="https://github.com/ramvamshi019" target="_blank" rel="noopener">GitHub</a>
+          </div>
+
+          <div class="meta" style="margin-top:10px;">
+            Replace: <strong>ADD_EMAIL</strong>, <strong>ADD_LINKEDIN</strong>, and optional IEEE/DOI links.
+          </div>
+        </div>
       </div>
     </section>
 
     <footer>
       © <span id="y"></span> Ram Vamshi Krishna Rudraram • Built on GitHub Pages
     </footer>
+  </div>
 
+  <!-- Sticky hire bar -->
+  <div class="hirebar" aria-label="Contact bar">
+    <div class="left">
+      <div class="t1">Hiring for Backend/Platform or Cloud/DevOps?</div>
+      <div class="t2">Let’s talk — I can start with interviews immediately.</div>
+    </div>
+    <div class="right">
+      <a class="btn primary" href="mailto:ADD_EMAIL?subject=Job%20Opportunity%20-%20Backend%20/%20Cloud">Email Me</a>
+      <a class="btn" href="ADD_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Gentle fade-in on scroll (professional)
+    // Reveal on scroll (professional)
     const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = 1;
-          e.target.style.transform = "translateY(0)";
-          e.target.style.transition = "opacity .55s ease, transform .55s ease";
-        }
-      });
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("on"); });
     }, { threshold: 0.08 });
 
-    document.querySelectorAll(".panel.section, .panel.hero").forEach(s => {
-      s.style.opacity = 0;
-      s.style.transform = "translateY(14px)";
-      obs.observe(s);
-    });
+    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
